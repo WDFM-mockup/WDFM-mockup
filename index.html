@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WDFM Portal</title>
-  <meta http-equiv="refresh" content="0; url=/main.html">
+  <!-- Small delay and relative URL so it works when the site is hosted in a subfolder -->
+  <meta http-equiv="refresh" content="1; url=main.html">
   <style>
     body {
       margin: 0;
@@ -24,11 +25,23 @@
       color: #9cd2ff;
     }
   </style>
+  <script>
+    // JS fallback that replaces the current history entry (better UX)
+    // Uses a relative path so it works inside subpaths (e.g., GitHub Pages project sites)
+    try {
+      window.location.replace('main.html');
+    } catch (e) {
+      // If replace fails, do nothing — meta refresh will still work
+    }
+  </script>
 </head>
 <body>
   <div class="message">
     <h1>Redirecting to WDFM Portal</h1>
-    <p>Loading the Water Demand Forecasting Model portal. If you are not redirected automatically, <a href="/index.html">click here</a>.</p>
+    <p>Loading the Water Demand Forecasting Model portal. If you are not redirected automatically, <a href="main.html">click here</a>.</p>
+    <noscript>
+      <p>JavaScript is disabled — <a href="main.html">click here to continue</a>.</p>
+    </noscript>
   </div>
 </body>
 </html>
